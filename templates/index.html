@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.3/dist/chart.umd.min.js"></script>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    
+    
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="mt-4 p-5 bg-primary text-white rounded">
+            <h1 class="text-center">Max's 1RM Estimates</h1>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8"><canvas id="chart_1"></canvas></div>
+        </div>
+        <div class="row">   
+            <div class="col-sm-6"><canvas id="chart_2"></canvas></div>
+            <div class="col-sm-6"><canvas id="chart_3"></canvas></div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+var chart_1 = new Chart(document.getElementById('chart_1'), {
+    type: 'line',
+    data: {
+        labels: {{data['bench']}},
+        datasets: [{
+            label: 'Bench Press',
+            data: {{data['bench']}},
+
+        }]
+    }
+
+});
+
+var chart_2 = new Chart(document.getElementById('chart_2'), {
+    type: 'line',
+    data: {
+        labels: {{data['deadlift']}},
+        datasets: [{
+            label: 'Deadlift',
+            data: {{data['deadlift']}},
+
+        }]
+    }
+
+});
+var chart_3 = new Chart(document.getElementById('chart_3'), {
+    type: 'line',
+    data: {
+        labels: {{data['squat']}},
+        datasets: [{
+            label: 'Squat',
+            data: {{data['squat']}},
+
+        }]
+    }
+
+});
+
+</script>
+</body>
+</html>
