@@ -34,26 +34,36 @@
 
 
 <script>
-var chart_1 = new Chart(document.getElementById('chart_1'), {
-    type: 'line',
-    data: {
-        labels: {{data['bench']}},
-        datasets: [{
-            label: 'Bench Press',
-            data: {{data['bench']}},
 
-        }]
-    }
+fetch('/api/data')
+    .then(response => response.json())
+    .then(responseData => {renderData(responseData);})                     
+    .catch(error => {
+        console.error('Error:', error);
+    });
 
-});
+function renderData(responseData) {
+    new Chart(document.getElementById('chart_1'), {
+        type: 'line',
+        data: {
+            labels: responseData.date,
+            datasets: [{
+                label: 'Bench Press',
+                data: responseData.data,
 
+            }]
+        }
+    });
+}
+
+/*
 var chart_2 = new Chart(document.getElementById('chart_2'), {
     type: 'line',
     data: {
-        labels: {{data['deadlift']}},
+        labels: {{data}},
         datasets: [{
             label: 'Deadlift',
-            data: {{data['deadlift']}},
+            data: {{data}},
 
         }]
     }
@@ -62,16 +72,16 @@ var chart_2 = new Chart(document.getElementById('chart_2'), {
 var chart_3 = new Chart(document.getElementById('chart_3'), {
     type: 'line',
     data: {
-        labels: {{data['squat']}},
+        labels: {{data}},
         datasets: [{
             label: 'Squat',
-            data: {{data['squat']}},
+            data: {{data}},
 
         }]
     }
 
 });
-
+*/
 </script>
 </body>
 </html>
